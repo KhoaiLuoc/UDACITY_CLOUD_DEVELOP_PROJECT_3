@@ -20,4 +20,4 @@ script:
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push $DOCKER_USERNAME/uda3-app-feed
+  - docker push $DOCKER_USERNAME/uda3-app-feed:v$TRAVIS_BUILD_NUMBER
