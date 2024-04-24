@@ -15,9 +15,9 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  - docker build -t uda3-app-feed ./udagram-api-feed
-  - docker tag uda3-app-feed $DOCKER_USERNAME/uda3-app-feed:v$TRAVIS_BUILD_NUMBER
+  - docker build -t uda3-app-feed:v$TRAVIS_BUILD_NUMBER ./udagram-api-feed
+  - docker tag uda3-app-feed:v$TRAVIS_BUILD_NUMBER $DOCKER_USERNAME/uda3-app-feed:v$TRAVIS_BUILD_NUMBER
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push $DOCKER_USERNAME/simple-node
+  - docker push $DOCKER_USERNAME/uda3-app-feed
