@@ -18,6 +18,18 @@ script:
   - docker build -t uda3-app-feed:v$TRAVIS_BUILD_NUMBER ./udagram-api-feed
   - docker tag uda3-app-feed:v$TRAVIS_BUILD_NUMBER $DOCKER_USERNAME/uda3-app-feed:v$TRAVIS_BUILD_NUMBER
 
+  - docker build -t uda3-app-user:v$TRAVIS_BUILD_NUMBER ./udagram-api-user
+  - docker tag uda3-app-user:v$TRAVIS_BUILD_NUMBER $DOCKER_USERNAME/uda3-app-user:v$TRAVIS_BUILD_NUMBER
+
+  - docker build -t uda3-app-fe:v$TRAVIS_BUILD_NUMBER ./udagram-frontend
+  - docker tag uda3-app-fe:v$TRAVIS_BUILD_NUMBER $DOCKER_USERNAME/uda3-app-fe:v$TRAVIS_BUILD_NUMBER
+
+  - docker build -t uda3-proxy:v$TRAVIS_BUILD_NUMBER ./udagram-reverseproxy
+  - docker tag uda3-proxy:v$TRAVIS_BUILD_NUMBER $DOCKER_USERNAME/uda3-proxy:v$TRAVIS_BUILD_NUMBER
+
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push $DOCKER_USERNAME/uda3-app-feed:v$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_USERNAME/uda3-app-user:v$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_USERNAME/uda3-app-fe:v$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_USERNAME/uda3-proxy:v$TRAVIS_BUILD_NUMBER
