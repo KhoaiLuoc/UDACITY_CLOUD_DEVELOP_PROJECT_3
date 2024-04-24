@@ -12,14 +12,12 @@ install:
 # Scripts to be run such as tests
 before_script:
   - echo "Test for TravisCI before_script"
-  - echo "$DOCKER_PASSWORD"
 
 script:
   - docker --version # print the version for logging
-  # - docker build -t simple-node .
-  # - docker tag simple-node YOUR_DOCKER_HUB/simple-node:latest
+  - docker build -t uda3-app-feed ./udagram-api-feed
+  - docker tag uda3-app-feed $DOCKER_USERNAME/uda3-app-feed:v$TRAVIS_BUILD_NUMBER
 
 after_success:
-  - echo "$DOCKER_PASSWORD after_success"
-  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  # - docker push YOUR_DOCKER_HUB/simple-node
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push $DOCKER_USERNAME/simple-node
