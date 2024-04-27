@@ -73,6 +73,16 @@ spec:
             - name: aws-secret
               mountPath: "/root/.aws/"
               readOnly: true
+          # Best practice with healthceck
+          # livenessProbe:
+          #   httpGet:
+          #     path: /api/v0/feed
+          #     port: 8080
+          #     # httpHeaders:
+          #     #   - name: Custom-Header
+          #     #     value: Awesome
+          #   initialDelaySeconds: 3
+          #   periodSeconds: 3
       restartPolicy: Always
       volumes:
         - name: aws-secret
