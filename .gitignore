@@ -6,7 +6,7 @@
 *.log
 *.tmp
 *.tmp.*
-*.sh
+# *.sh
 log.txt
 *.sublime-project
 *.sublime-workspace

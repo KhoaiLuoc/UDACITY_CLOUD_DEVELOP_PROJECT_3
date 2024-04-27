@@ -1,0 +1,10 @@
+export POSTGRES_USERNAME=postgres
+export POSTGRES_PASSWORD=Toan151090
+export POSTGRES_HOST=database-1.czjrlvy0kp3u.us-east-1.rds.amazonaws.com
+export POSTGRES_DB=postgres
+export AWS_BUCKET=arn:aws:s3:us-east-1:849678064320:accesspoint/awttcc
+# export AWS_BUCKET=arn:aws:s3:::toanuda3
+export AWS_REGION=us-east-1
+export AWS_PROFILE=default
+export JWT_SECRET=testing
+export URL=http://localhost:8100
